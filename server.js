@@ -5,6 +5,7 @@ const app = express();
 app.use(bodyParser.json());
 const PersonRoutes = require("./routes/PersonRoutes")
 const MenuRoutes = require("./routes/MenuRoutes");
+require("dotenv").config();
 
 app.get("/", function (req, res) {
   res.send("welcome to node js 1st mongodb site");
@@ -14,6 +15,7 @@ app.get("/", function (req, res) {
 app.use("/person", PersonRoutes);
 app.use("/menu", MenuRoutes);
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
   console.log("server is listenig on port 3000");
 });
